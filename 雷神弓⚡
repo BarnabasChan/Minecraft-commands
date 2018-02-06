@@ -1,0 +1,30 @@
+summon minecraft:falling_block ~ ~1 ~ 
+{
+Block:"minecraft:redstone_block",
+Time:1,
+Passengers:[
+{id:"minecraft:falling_block",Block:"minecraft:activator_rail",Time:1b},
+
+{id:"minecraft:commandblock_minecart",Command:"gamerule commandBlockOutput false"},
+{id:"minecraft:commandblock_minecart",Command:"gamerule sendCommandFeedback false"},
+{id:"minecraft:commandblock_minecart",Command:"scoreboard objectives add time dummy"},
+{id:"minecraft:commandblock_minecart",Command:"scoreboard objectives add item dummy"},
+
+{id:"minecraft:commandblock_minecart",Command:"fill ~1 ~-2 ~ ~7 ~-2 ~-2 minecraft:gold_block"},
+{id:"minecraft:commandblock_minecart",Command:"fill ~1 ~-1 ~ ~7 ~1 ~-2 minecraft:stained_glass 4"},
+{id:"minecraft:commandblock_minecart",Command:"fill ~2 ~-1 ~-1 ~6 ~1 ~-1 minecraft:air"},
+{id:"minecraft:commandblock_minecart",Command:"summon minecraft:falling_block ~2 ~1.1 ~-1 {Block:\"minecraft:gold_block\",Time:1,Passengers:[{id:\"minecraft:falling_block\",Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"scoreboard players set @e[type=item] item 1 {Item:{id:\\\"minecraft:bow\\\"},OnGround:1b}\"},Data:1,Time:1,Passengers:[{id:\"minecraft:falling_block\",Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"scoreboard players set @e[type=item] item 2 {Item:{id:\\\"minecraft:blaze_rod\\\"},OnGround:1b}\"},Data:5,Time:1}]}]}"},
+{id:"minecraft:commandblock_minecart",Command:"summon minecraft:falling_block ~3 ~1.1 ~-1 {Block:\"minecraft:repeating_command_block\",TileEntityData:{Command:\"scoreboard players tag @a add thunder {SelectedItem:{id:\\\"minecraft:bow\\\",Count:1b,tag:{display:{Name:\\\"雷神弓\\\"}}}}\"},Data:5,Time:1,Passengers:[{id:\"minecraft:falling_block\",Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"scoreboard players tag @a remove thunder\"},Data:4,Time:1,Passengers:[{id:\"minecraft:falling_block\",Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"execute @e[score_item=1,score_item_min=1] ~ ~ ~ execute @e[score_item=2,score_item_min=2,r=1] ~ ~ ~ summon minecraft:item ~ ~ ~ {Tags:[\\\"bow_item\\\"],Item:{id:\\\"minecraft:bow\\\",Count:1b,tag:{display:{Name:\\\"雷神弓\\\"},ench:[{id:51,lvl:1}]}},PickupDelay:20}\"},Data:5,Time:1}]}]}"},
+{id:"minecraft:commandblock_minecart",Command:"summon minecraft:falling_block ~4 ~1.1 ~-1 {Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"scoreboard players tag @a add thunder {Inventory:[{Slot:-106b,id:\\\"minecraft:bow\\\",Count:1b,tag:{display:{Name:\\\"雷神弓\\\"}}}]}\"},Data:5,Time:1,Passengers:[{id:\"minecraft:falling_block\",Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"kill @e[type=arrow,score_time_min=60]\"},Data:4,Time:1,Passengers:[{id:\"minecraft:falling_block\",Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"execute @e[type=item,tag=bow_item] ~ ~ ~ kill @e[r=2,score_item_min=1,type=item,tag=!bow_item]\"},Data:5,Time:1}]}]}"},
+{id:"minecraft:commandblock_minecart",Command:"summon minecraft:falling_block ~5 ~1.1 ~-1 {Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"execute @a[tag=thunder] ~ ~ ~ scoreboard players set @e[type=arrow,tag=!arrow,c=1] time 1\"},Data:5,Time:1,Passengers:[{id:\"minecraft:falling_block\",Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"execute @e[type=arrow,score_time_min=10] ~ ~ ~ summon minecraft:lightning_bolt\"},Data:4,Time:1,Passengers:[{id:\"minecraft:falling_block\",Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"execute @e[type=item,tag=bow_item] ~ ~ ~ particle explode ~ ~ ~ 0.1 0.1 0.1 10 10 normal\"},Data:5,Time:1}]}]}"},
+{id:"minecraft:commandblock_minecart",Command:"summon minecraft:falling_block ~6 ~1.1 ~-1 {Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"scoreboard players tag @e[tag=!arrow,type=arrow] add arrow\"},Data:1,Time:1,Passengers:[{id:\"minecraft:falling_block\",Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"scoreboard players add @e[type=arrow,score_time_min=1] time 1\"},Data:4,Time:1,Passengers:[{id:\"minecraft:falling_block\",Block:\"minecraft:chain_command_block\",TileEntityData:{Command:\"scoreboard players tag @e[type=item,tag=bow_item] remove bow_item\"},Data:5,Time:1}]}]}"},
+{id:"minecraft:commandblock_minecart",Command:"summon armor_stand ~2 ~-1 ~-1 {Tags:[\"bow_stand\"],Invisible:1b}"},
+{id:"minecraft:commandblock_minecart",Command:"fill ~ ~-1 ~-1 ~ ~1 ~-1 air"},
+{id:"minecraft:commandblock_minecart",Command:"setblock ~ ~ ~-1 minecraft:wall_sign 4 replace {Text2:\"{\\\"text\\\":\\\"按此啟動機器\\\",\\\"clickEvent\\\":{\\\"action\\\":\\\"run_command\\\",\\\"value\\\":\\\"/execute @e[r=6,type=armor_stand,tag=bow_stand] ~ ~ ~ setblock ~ ~ ~ minecraft:redstone_block\\\"}}\",Text3:\"{\\\"text\\\":\\\"press here to turn on the machine\\\"}\"}"},
+{id:"minecraft:commandblock_minecart",Command:"setblock ~ ~-1 ~-1 minecraft:wall_sign 4 replace {Text2:\"{\\\"text\\\":\\\"按此關閉機器\\\",\\\"clickEvent\\\":{\\\"action\\\":\\\"run_command\\\",\\\"value\\\":\\\"/execute @e[r=6,type=armor_stand,tag=bow_stand] ~ ~ ~ setblock ~ ~ ~ minecraft:gold_block\\\"}}\",Text3:\"{\\\"text\\\":\\\"press here to turn off the machine\\\"}\"}"},
+
+{id:"minecraft:commandblock_minecart",Command:"summon minecraft:commandblock_minecart ~ ~0.5 ~ {Command:\"fill ~1 ~2 ~ ~7 ~2 ~-2 minecraft:gold_block\"}"},
+{id:"minecraft:commandblock_minecart",Command:"summon minecraft:commandblock_minecart ~ ~1 ~ {Command:\"setblock ~ ~1 ~ minecraft:chain_command_block 1 replace {Command:\\\"fill ~ ~ ~ ~ ~-3 ~ air\\\",auto:1b}\"}"},
+{id:"minecraft:commandblock_minecart",Command:"summon minecraft:commandblock_minecart ~ ~1 ~ {Command:\"setblock ~ ~ ~ minecraft:command_block 1 replace {Command:\\\"kill @e[type=commandblock_minecart,r=1]\\\",auto:1b}\"}"}
+]
+}
